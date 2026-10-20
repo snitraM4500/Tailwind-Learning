@@ -107,42 +107,42 @@
             {
                 id: 'organizacao',
                 emoji: '🗂️',
-                title: 'Organização na escola',
-                blurb: 'Esqueces-te de trabalhos? Tens muitas tarefas ao mesmo tempo? Conta-nos como te organizas e o que um serviço de organização devia ter.',
-                questions: 16,
-                tags: ['Tarefas', 'Gestão de tempo', 'Calendário de testes'],
+                title: 'Questionário sobre a organização na E. Contas & Letras',
+                blurb: 'Esqueces-te de entregar trabalhos? Tens dificuldade em decidir o que fazer primeiro? Conta-nos como organizas as tuas tarefas e o que um serviço de organização escolar devia ter.',
+                questions: 16, minutes: 5,
+                tags: ['Tarefas', 'Prioridades', 'Calendário de testes'],
                 note: 'bg-yellow-200', accent: 'border-yellow-400', tilt: '-rotate-2',
                 url: 'https://docs.google.com/forms/d/e/1FAIpQLSd1r7r4FiAdIAq1FGn7YE3wvLrTfR_lExndfkbAovFSTBk9fw/viewform',
             },
             {
                 id: 'mudar',
                 emoji: '📢',
-                title: 'O que gostarias de mudar?',
-                blurb: 'Limpeza, recreio, cantina, comunicação com a direção… Se a direção agisse amanhã, quais seriam as tuas três mudanças?',
-                questions: 16,
-                tags: ['Satisfação', 'Comunicação', 'Regras'],
+                title: 'A organização escolar',
+                blurb: 'Horários e intervalos, marcação e entrega de testes, limite de TPCs… Diz-nos o que funciona e o que devia mudar na organização do calendário escolar.',
+                questions: 18, minutes: 6,
+                tags: ['Horários', 'Testes', 'TPCs'],
                 note: 'bg-pink-200', accent: 'border-pink-400', tilt: 'rotate-2',
-                url: 'https://docs.google.com/forms/d/e/1FAIpQLSf_w1hOkPsbe0mMxLE_wk0t4ehFbiQHhWi5nXvCyNTcDYRRag/viewform',
+                url: 'https://docs.google.com/forms/d/e/1FAIpQLSfaJzG86b56sEOUe9Qj6UCnRplFv5Q_haKa60iLVp8YkxsyBw/viewform?usp=header',
             },
             {
                 id: 'estudo',
-                emoji: '📚',
-                title: 'Mudanças para a escola',
-                blurb: 'Quando não percebes a matéria, o que fazes? Vídeos, resumos, exercícios por dificuldade… Ajuda-nos a melhorar os materiais de estudo.',
-                questions: 16,
-                tags: ['Estudo', 'Materiais', 'Autonomia'],
+                emoji: '🤝',
+                title: 'Apoio aos alunos',
+                blurb: 'Quando tens dificuldades, sabes a quem recorrer? Fala-nos do apoio dos professores e da psicóloga, do bem-estar, da inclusão e de como a escola ouve os alunos.',
+                questions: 29, minutes: 10,
+                tags: ['Apoio', 'Bem-estar', 'Inclusão'],
                 note: 'bg-sky-200', accent: 'border-sky-400', tilt: 'rotate-1',
-                url: 'https://docs.google.com/forms/d/e/1FAIpQLSfg2otry471Cfh-rDNPFUZ8Hx71YX_SvE1wa8ZhrLdLYESHAw/viewform',
+                url: 'https://docs.google.com/forms/d/e/1FAIpQLSdccYs7808eblL4LnpupeQQ3axoczRmUI8gEAlHRp1wb4Gkzg/viewform?usp=header',
             },
             {
                 id: 'ecl',
                 emoji: '🏫',
-                title: 'O que gostarias que mudasse na EC&L?',
-                blurb: 'Salas, casas de banho, recreio, visitas de estudo e debates. Diz-nos como te sentes na escola, sem pressões.',
-                questions: 12,
-                tags: ['Espaços', 'Atividades', 'Ambiente'],
+                title: 'Relações, convivência e socialização?',
+                blurb: 'Respeito entre colegas, relação com os professores, eventos, dias sem uniforme, competições interturmas e visitas de estudo. Como podemos conviver melhor?',
+                questions: 22, minutes: 8,
+                tags: ['Convivência', 'Eventos', 'Espírito escolar'],
                 note: 'bg-lime-200', accent: 'border-lime-500', tilt: '-rotate-1',
-                url: 'https://docs.google.com/forms/d/e/1FAIpQLSeGWhr30sh2jGuV_wOWkVRPHDBt3JRXqb4p66bcKN2Ytc4AaQ/viewform',
+                url: 'https://docs.google.com/forms/d/e/1FAIpQLScdZQe-HqP8x7zmU5_yBn7CuoQOu7VlZc-DdvNuU1KPaV5rUg/viewform',
             },
         ];
 
@@ -175,7 +175,7 @@
                         ${f.tags.map(t => `<span class="text-xs font-semibold uppercase tracking-wide bg-white/60 rounded-full px-3 py-1">${t}</span>`).join('')}
                     </div>
                     <div class="mt-5 flex items-center justify-between border-t-2 border-dashed ${f.accent} pt-3 font-semibold">
-                        <span>${f.questions} perguntas · ~5 min</span>
+                        <span>${f.questions} perguntas · ~${f.minutes} min</span>
                         <span>Responder →</span>
                     </div>
                     ${isDone ? `<span class="absolute -top-4 -right-4 rotate-12 bg-green-600 text-white font-hand text-2xl px-3 py-1 rounded-md shadow-lg">Feito ✓</span>` : ''}
@@ -201,7 +201,7 @@
             document.getElementById('drawerTitle').textContent = current.title;
             document.getElementById('drawerHead').className = `flex items-center gap-3 px-5 py-4 border-b-4 ${current.note} ${current.accent}`;
             document.getElementById('newTab').href = current.url;
-            frame.src = `${current.url}?embedded=true`;
+            frame.src = `${current.url.split('?')[0]}?embedded=true`;
             doneCheck.checked = done.includes(current.id);
             drawer.classList.remove('translate-x-full');
             backdrop.classList.remove('opacity-0', 'pointer-events-none');
